@@ -23,3 +23,5 @@ class Repository {
     return item;
   }
 }
+
+//ทำไมไม่ติดใน origin
