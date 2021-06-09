@@ -4,9 +4,14 @@ import 'dart:io';
 import 'package:path/path.dart';
 import 'dart:async';
 import '../models/item_model.dart';
+import 'package:udemy4/src/resources/repository.dart';
 
-class NewsDbProvider {
+class NewsDbProvider implements Source, Cache {
   Database db;
+
+  NewsDbProvider() {
+    init();
+  }
 
   void init() async {
     Directory documentDirectory = await getApplicationDocumentsDirectory();
@@ -48,4 +53,11 @@ class NewsDbProvider {
   Future<int> addItem(ItemModel item) {
     db.insert("Items", item.toMap());
   }
+
+  Future<List<int>> fetchTopIds() {
+    //todo
+    return null;
+  }
 }
+
+final newsDbProvider = NewsDbProvider();
